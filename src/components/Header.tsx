@@ -11,12 +11,12 @@ export const Header = () => {
 
   const navItems = [
     { name: "Home", path: "https://www.techmiyaedtech.com/" },
-    { name: "Courses", path: "https://www.techmiyaedtech.com/courses" },
-    { name: "Reviews", path: "https://www.techmiyaedtech.com/reviews" },
-    { name: "Psychometric Test", path: "https://www.techmiyaedtech.com/psychometric-test" },
-    { name: "Contact", path: "https://www.techmiyaedtech.com/contact" },
+    { name: "Courses", path: "https://lms.techmiyaedtech.com/s/store" },
+    { name: "Reviews", path: "https://www.techmiyaedtech.com/reviews/" },
+    { name: "Psychometric Test", path: "https://www.techmiyaedtech.com/psychometric-test/" },
+    { name: "Contact", path: "https://www.techmiyaedtech.com/contact/" },
     { name: "Blog", path: "/" },
-    { name: "Jobs", path: "https://www.techmiyaedtech.com/jobs" }
+    { name: "Jobs", path: "https://jobs.techmiyaedtech.com/" }
   ];
 
   const isActive = (path: string) => location.pathname === path;

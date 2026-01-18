@@ -40,22 +40,22 @@ export const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="https://techmiyaedtech.com/" className="text-gray-300 hover:text-white transition-colors">
+                <a href="https://www.techmiyaedtech.com/" className="text-gray-300 hover:text-white transition-colors">
                   Home
                 </a>
               </li>
               <li>
-                <a href="https://techmiyaedtech.com/courses" className="text-gray-300 hover:text-white transition-colors">
+                <a href="https://lms.techmiyaedtech.com/s/store/" className="text-gray-300 hover:text-white transition-colors">
                   Courses
                 </a>
               </li>
               <li>
-                <a href="https://techmiyaedtech.com/reviews" className="text-gray-300 hover:text-white transition-colors">
+                <a href="https://www.techmiyaedtech.com/reviews/" className="text-gray-300 hover:text-white transition-colors">
                   Reviews
                 </a>
               </li>
               <li>
-                <a href="https://techmiyaedtech.com/contact" className="text-gray-300 hover:text-white transition-colors">
+                <a href="https://www.techmiyaedtech.com/contact/" className="text-gray-300 hover:text-white transition-colors">
                   Contact
                 </a>
               </li>
