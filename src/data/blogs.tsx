@@ -482,9 +482,9 @@ export const blogs: BlogPost[] = [
 
                 <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Verdict</h2>
                 <ul className="list-disc pl-6 space-y-2 mt-4">
-                    <li>Want to be a Data Scientist? -> <strong>Python</strong></li>
-                    <li>Want to work at a big bank/tech co? -> <strong>Java</strong></li>
-                    <li>Want to build hardware/drivers? -> <strong>C</strong></li>
+                    <li>Want to be a Data Scientist? <strong>Python</strong></li>
+                    <li>Want to work at a big bank/tech co? <strong>Java</strong></li>
+                    <li>Want to build hardware/drivers? <strong>C</strong></li>
                 </ul>
             </>
         )
