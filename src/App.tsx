@@ -8,7 +8,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { BrowserRouter } from "react-router-dom";
 import Blog from "./pages/Blog";
-import MachineLearningIntro from "./pages/MachineLearningIntro";
+import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,7 +24,7 @@ const App = () => (
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Blog />} />
-              <Route path="/blog/machine-learning-introduction" element={<MachineLearningIntro />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

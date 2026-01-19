@@ -1,35 +1,42 @@
-
+import { useState, useMemo } from 'react';
 import { BlogCard } from "@/components/BlogCard";
+import { Input } from "@/components/ui/input";
 import {
-    Pagination,
-    PaginationContent,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
-} from "@/components/ui/pagination";
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import { blogs } from "@/data/blogs";
+import { Button } from "@/components/ui/button";
+import { Search, X } from "lucide-react";
 
 const Blog = () => {
-    // Mock data as requested: 1 real, 9 placeholders
-    const blogs = [
-        {
-            id: 1,
-            title: "Introduction to Machine Learning",
-            description: "Discover the fundamentals of Machine Learning, its types (Supervised, Unsupervised, Reinforcement), and key algorithms that power today's AI.",
-            date: "October 15, 2023",
-            slug: "/blog/machine-learning-introduction",
-            isPlaceholder: false,
-        },
-        // Generate 9 placeholders
-        ...Array.from({ length: 9 }).map((_, i) => ({
-            id: i + 2,
-            title: `Upcoming Blog Post ${i + 1}`,
-            description: "Stay tuned for more exciting content on technology, coding, and career development.",
-            date: "Coming Soon",
-            slug: "#",
-            isPlaceholder: true,
-        })),
-    ];
+    const [searchTerm, setSearchTerm] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("All");
+
+    // Extract unique categories
+    const categories = useMemo(() => {
+        const cats = new Set(blogs.map(b => b.category));
+        return ["All", ...Array.from(cats)];
+    }, []);
+
+    const filteredBlogs = useMemo(() => {
+        return blogs
+            .filter((blog) => {
+                const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    blog.description.toLowerCase().includes(searchTerm.toLowerCase());
+                const matchesCategory = selectedCategory === "All" || blog.category === selectedCategory;
+                return matchesSearch && matchesCategory;
+            })
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    }, [searchTerm, selectedCategory]);
+
+    const clearFilters = () => {
+        setSearchTerm("");
+        setSelectedCategory("All");
+    };
 
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -43,38 +50,63 @@ const Blog = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                    {blogs.map((blog) => (
-                        <BlogCard
-                            key={blog.id}
-                            title={blog.title}
-                            description={blog.description}
-                            date={blog.date}
-                            slug={blog.slug}
-                            isPlaceholder={blog.isPlaceholder}
+                {/* Search and Filter Section */}
+                <div className="flex flex-col md:flex-row gap-4 mb-10 max-w-4xl mx-auto">
+                    <div className="relative flex-grow">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                        <Input
+                            placeholder="Search articles..."
+                            className="pl-10 bg-white"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
                         />
-                    ))}
+                    </div>
+                    <div className="w-full md:w-48">
+                        <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                            <SelectTrigger className="bg-white">
+                                <SelectValue placeholder="Category" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {categories.map(cat => (
+                                    <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    {(searchTerm || selectedCategory !== "All") && (
+                        <Button variant="ghost" onClick={clearFilters} className="px-3">
+                            <X className="h-4 w-4 mr-2" /> Clear
+                        </Button>
+                    )}
                 </div>
 
-                <Pagination>
-                    <PaginationContent>
-                        <PaginationItem>
-                            <PaginationPrevious href="#" className="pointer-events-none opacity-50" />
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationLink href="#" isActive>1</PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationLink href="#">2</PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationLink href="#">3</PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationNext href="#" />
-                        </PaginationItem>
-                    </PaginationContent>
-                </Pagination>
+                {filteredBlogs.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                        {filteredBlogs.map((blog) => (
+                            <BlogCard
+                                key={blog.id}
+                                title={blog.title}
+                                description={blog.description}
+                                date={blog.date}
+                                slug={`/blog/${blog.slug}`}
+                                image={blog.image}
+                                isPlaceholder={false}
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="text-center py-20">
+                        <h3 className="text-xl font-medium text-gray-900">No articles found</h3>
+                        <p className="mt-2 text-gray-500">Try adjusting your search or filters.</p>
+                        <Button
+                            variant="link"
+                            onClick={clearFilters}
+                            className="text-amber-600 mt-2"
+                        >
+                            Clear all filters
+                        </Button>
+                    </div>
+                )}
             </div>
         </div>
     );
