@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { BlogCard } from "@/components/BlogCard";
 import { Input } from "@/components/ui/input";
 import {
@@ -10,11 +10,14 @@ import {
 } from "@/components/ui/select";
 import { blogs } from "@/data/blogs";
 import { Button } from "@/components/ui/button";
-import { Search, X } from "lucide-react";
+import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
+
+const BLOGS_PER_PAGE = 6;
 
 const Blog = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("All");
+    const [currentPage, setCurrentPage] = useState(1);
 
     // Extract unique categories
     const categories = useMemo(() => {
@@ -33,9 +36,43 @@ const Blog = () => {
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     }, [searchTerm, selectedCategory]);
 
+    // Reset to page 1 when filters change
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchTerm, selectedCategory]);
+
+    // Pagination calculations
+    const totalPages = Math.ceil(filteredBlogs.length / BLOGS_PER_PAGE);
+    const startIndex = (currentPage - 1) * BLOGS_PER_PAGE;
+    const endIndex = startIndex + BLOGS_PER_PAGE;
+    const currentBlogs = filteredBlogs.slice(startIndex, endIndex);
+
     const clearFilters = () => {
         setSearchTerm("");
         setSelectedCategory("All");
+        setCurrentPage(1);
+    };
+
+    const goToPage = (page: number) => {
+        setCurrentPage(page);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Generate page numbers to display
+    const getPageNumbers = () => {
+        const pages: (number | string)[] = [];
+        if (totalPages <= 5) {
+            for (let i = 1; i <= totalPages; i++) pages.push(i);
+        } else {
+            if (currentPage <= 3) {
+                pages.push(1, 2, 3, 4, '...', totalPages);
+            } else if (currentPage >= totalPages - 2) {
+                pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+            } else {
+                pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+            }
+        }
+        return pages;
     };
 
     return (
@@ -80,20 +117,72 @@ const Blog = () => {
                     )}
                 </div>
 
-                {filteredBlogs.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                        {filteredBlogs.map((blog) => (
-                            <BlogCard
-                                key={blog.id}
-                                title={blog.title}
-                                description={blog.description}
-                                date={blog.date}
-                                slug={`/blog/${blog.slug}`}
-                                image={blog.image}
-                                isPlaceholder={false}
-                            />
-                        ))}
-                    </div>
+                {/* Results count */}
+                <div className="text-sm text-gray-500 mb-6 text-center">
+                    Showing {startIndex + 1}-{Math.min(endIndex, filteredBlogs.length)} of {filteredBlogs.length} articles
+                </div>
+
+                {currentBlogs.length > 0 ? (
+                    <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                            {currentBlogs.map((blog) => (
+                                <BlogCard
+                                    key={blog.id}
+                                    title={blog.title}
+                                    description={blog.description}
+                                    date={blog.date}
+                                    slug={`/blog/${blog.slug}`}
+                                    image={blog.image}
+                                    isPlaceholder={false}
+                                />
+                            ))}
+                        </div>
+
+                        {/* Pagination Controls */}
+                        {totalPages > 1 && (
+                            <div className="flex items-center justify-center gap-2 mt-8 mb-12">
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => goToPage(currentPage - 1)}
+                                    disabled={currentPage === 1}
+                                    className="flex items-center gap-1"
+                                >
+                                    <ChevronLeft className="h-4 w-4" />
+                                    Previous
+                                </Button>
+
+                                <div className="flex items-center gap-1 mx-2">
+                                    {getPageNumbers().map((page, index) => (
+                                        typeof page === 'number' ? (
+                                            <Button
+                                                key={index}
+                                                variant={currentPage === page ? "default" : "outline"}
+                                                size="sm"
+                                                onClick={() => goToPage(page)}
+                                                className={`w-10 h-10 ${currentPage === page ? 'bg-amber-600 hover:bg-amber-700 text-white' : ''}`}
+                                            >
+                                                {page}
+                                            </Button>
+                                        ) : (
+                                            <span key={index} className="px-2 text-gray-400">...</span>
+                                        )
+                                    ))}
+                                </div>
+
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => goToPage(currentPage + 1)}
+                                    disabled={currentPage === totalPages}
+                                    className="flex items-center gap-1"
+                                >
+                                    Next
+                                    <ChevronRight className="h-4 w-4" />
+                                </Button>
+                            </div>
+                        )}
+                    </>
                 ) : (
                     <div className="text-center py-20">
                         <h3 className="text-xl font-medium text-gray-900">No articles found</h3>
