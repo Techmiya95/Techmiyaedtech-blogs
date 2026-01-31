@@ -1203,5 +1203,828 @@ sns.heatmap(df.corr(), annot=True, cmap='coolwarm')`}
                 </p>
             </>
         )
-    }
+    },
+    {
+        id: 23,
+        title: "RAG vs Fine-Tuning: Which Approach Should You Use for Your LLM Project?",
+        slug: "rag-vs-fine-tuning-llm",
+        date: "2026-01-30",
+        readTime: "10 min read",
+        description: "Demystify Retrieval-Augmented Generation and fine-tuning. Learn when to use each approach for your AI projects.",
+        category: "Machine Learning",
+        image: "https://picsum.photos/seed/rag-vs-fine-tuning-llm/800/400",
+        content: (
+            <>
+                <p>Building with LLMs? The two biggest approaches are RAG and Fine-Tuning. Choosing wrong can cost you months.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">What is RAG?</h2>
+                <p><strong>Retrieval-Augmented Generation</strong> gives the LLM access to external knowledge at runtime. Think of it as "open-book" AI.</p>
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 my-6">
+                    <p className="font-medium text-blue-800">How RAG Works:</p>
+                    <ol className="text-sm mt-2 list-decimal pl-4 space-y-1">
+                        <li>User asks a question</li>
+                        <li>System searches your documents (vector database)</li>
+                        <li>Relevant chunks are passed to the LLM as context</li>
+                        <li>LLM generates answer using that context</li>
+                    </ol>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">What is Fine-Tuning?</h2>
+                <p>Fine-tuning actually <strong>changes the model's weights</strong>. You're teaching it new behaviors or knowledge permanently.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">When to Use Each</h2>
+                <div className="overflow-x-auto my-6">
+                    <table className="min-w-full text-sm text-left text-gray-500">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr><th className="px-6 py-3">Scenario</th><th className="px-6 py-3">Best Choice</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr className="bg-white border-b"><td className="px-6 py-4">Q&A over company docs</td><td className="px-6 py-4">RAG ✅</td></tr>
+                            <tr className="bg-white border-b"><td className="px-6 py-4">Teaching new writing style</td><td className="px-6 py-4">Fine-Tuning ✅</td></tr>
+                            <tr className="bg-white border-b"><td className="px-6 py-4">Data changes frequently</td><td className="px-6 py-4">RAG ✅</td></tr>
+                            <tr className="bg-white"><td className="px-6 py-4">Domain-specific jargon</td><td className="px-6 py-4">Fine-Tuning ✅</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </>
+        )
+    },
+    {
+        id: 24,
+        title: "Transfer Learning Explained: Why You Don't Need to Train From Scratch",
+        slug: "transfer-learning-explained",
+        date: "2026-01-29",
+        readTime: "8 min read",
+        description: "Leverage pre-trained models for faster results. Learn how transfer learning revolutionized AI development.",
+        category: "Machine Learning",
+        image: "https://picsum.photos/seed/transfer-learning-explained/800/400",
+        content: (
+            <>
+                <p>Training a neural network from scratch needs millions of images and weeks of GPU time. Transfer learning lets you skip 90% of that work.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The Core Idea</h2>
+                <p>Take a model trained on a massive dataset (like ImageNet with 14M images), then adapt it to your specific task with minimal data.</p>
+                <div className="bg-green-50 p-6 rounded-lg border border-green-100 my-6">
+                    <p className="font-medium text-green-800">Why It Works:</p>
+                    <p className="text-sm mt-2">Early layers learn universal features (edges, textures). Only later layers are task-specific. You freeze the early layers and retrain the later ones.</p>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Popular Pre-trained Models</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>ResNet, VGG, EfficientNet:</strong> For image classification</li>
+                    <li><strong>BERT, GPT:</strong> For NLP tasks</li>
+                    <li><strong>YOLO:</strong> For object detection</li>
+                    <li><strong>Whisper:</strong> For speech recognition</li>
+                </ul>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">How to Do It in Python</h2>
+                <div className="bg-gray-800 text-white p-4 rounded-md my-4 font-mono text-sm">
+                    from tensorflow.keras.applications import ResNet50<br />
+                    base_model = ResNet50(weights='imagenet', include_top=False)<br />
+                    base_model.trainable = False  # Freeze layers
+                </div>
+            </>
+        )
+    },
+    {
+        id: 25,
+        title: "The Complete Guide to Prompt Engineering for Beginners",
+        slug: "prompt-engineering-guide",
+        date: "2026-01-28",
+        readTime: "12 min read",
+        description: "Systematic techniques to get better outputs from ChatGPT, Claude, and other LLMs. Master the art of AI communication.",
+        category: "Machine Learning",
+        image: "https://picsum.photos/seed/prompt-engineering-guide/800/400",
+        content: (
+            <>
+                <p>The difference between a mediocre AI response and a brilliant one? The prompt. Here's how to write prompts that actually work.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The Anatomy of a Good Prompt</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>Role:</strong> "You are an expert Python developer..."</li>
+                    <li><strong>Context:</strong> Background info the AI needs</li>
+                    <li><strong>Task:</strong> Clear, specific instruction</li>
+                    <li><strong>Format:</strong> How you want the output</li>
+                    <li><strong>Examples:</strong> Show what good looks like</li>
+                </ul>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Key Techniques</h2>
+                <div className="grid md:grid-cols-2 gap-4 my-6">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Chain-of-Thought</h3>
+                        <p className="text-sm text-gray-600">"Think step by step..."</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Few-Shot Learning</h3>
+                        <p className="text-sm text-gray-600">Provide 2-3 examples first</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Role Prompting</h3>
+                        <p className="text-sm text-gray-600">Assign a persona to the AI</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Constraints</h3>
+                        <p className="text-sm text-gray-600">"In 100 words or less..."</p>
+                    </div>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Common Mistakes</h2>
+                <div className="bg-red-50 p-6 rounded-lg border border-red-100 my-6">
+                    <ul className="text-sm space-y-2">
+                        <li>❌ Being too vague: "Write something good"</li>
+                        <li>❌ Not specifying format: Get random structure</li>
+                        <li>❌ Asking multiple things at once: Confused output</li>
+                    </ul>
+                </div>
+            </>
+        )
+    },
+    {
+        id: 26,
+        title: "Computer Vision 101: How Machines Actually 'See' Images",
+        slug: "computer-vision-101",
+        date: "2026-01-27",
+        readTime: "9 min read",
+        description: "CNNs, object detection, and real-world applications. Understand how AI processes visual information.",
+        category: "Machine Learning",
+        image: "https://picsum.photos/seed/computer-vision-101/800/400",
+        content: (
+            <>
+                <p>To a computer, an image is just a grid of numbers. Teaching machines to "see" is one of AI's greatest achievements.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Images as Numbers</h2>
+                <p>A 1080p color image = 1920 × 1080 × 3 = 6.2 million numbers! Each pixel has Red, Green, Blue values from 0-255.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Convolutional Neural Networks (CNNs)</h2>
+                <p>CNNs use sliding "filters" that scan across the image looking for patterns—first edges, then shapes, then objects.</p>
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 my-6">
+                    <p className="font-medium text-blue-800">Key Layers:</p>
+                    <ul className="text-sm mt-2 list-disc pl-4">
+                        <li><strong>Conv Layer:</strong> Detects features</li>
+                        <li><strong>Pooling:</strong> Reduces dimensions</li>
+                        <li><strong>Dense:</strong> Makes final prediction</li>
+                    </ul>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Real-World Applications</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>Self-driving cars:</strong> Lane detection, pedestrian recognition</li>
+                    <li><strong>Medical imaging:</strong> Tumor detection in X-rays</li>
+                    <li><strong>Agriculture:</strong> Crop disease identification</li>
+                    <li><strong>Retail:</strong> Visual search, inventory tracking</li>
+                </ul>
+            </>
+        )
+    },
+    {
+        id: 27,
+        title: "TypeScript vs JavaScript: Is It Worth Learning TypeScript in 2026?",
+        slug: "typescript-vs-javascript-2026",
+        date: "2026-01-26",
+        readTime: "7 min read",
+        description: "Real pros and cons for web developers. Should you make the switch to TypeScript?",
+        category: "Web Development",
+        image: "https://picsum.photos/seed/typescript-vs-javascript-2026/800/400",
+        content: (
+            <>
+                <p>TypeScript is JavaScript with superpowers. But is it worth the learning curve? Let's find out.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">What TypeScript Adds</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>Static Types:</strong> Catch errors before runtime</li>
+                    <li><strong>Better IDE Support:</strong> Autocomplete, refactoring</li>
+                    <li><strong>Interfaces:</strong> Define object shapes</li>
+                    <li><strong>Enums:</strong> Named constants</li>
+                </ul>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Quick Example</h2>
+                <div className="bg-gray-800 text-white p-4 rounded-md my-4 font-mono text-sm">
+                    // JavaScript - fails at runtime<br />
+                    function greet(name) {"{"} return "Hello " + name {"}"}<br />
+                    greet(123) // No error until you run it<br /><br />
+                    // TypeScript - fails immediately<br />
+                    function greet(name: string) {"{"} return "Hello " + name {"}"}<br />
+                    greet(123) // ❌ Error: number is not string
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The Verdict</h2>
+                <div className="bg-green-50 p-6 rounded-lg border border-green-100 my-6">
+                    <p className="text-sm"><strong>Learn TypeScript if:</strong> You work on large codebases, teams, or enterprise apps.</p>
+                    <p className="text-sm mt-2"><strong>Stick with JS if:</strong> You're building small scripts or learning web dev basics.</p>
+                </div>
+            </>
+        )
+    },
+    {
+        id: 28,
+        title: "API Authentication Explained: Session, JWT, OAuth – When to Use What",
+        slug: "api-authentication-guide",
+        date: "2026-01-25",
+        readTime: "11 min read",
+        description: "A practical guide to securing your apps. Understand the differences between authentication methods.",
+        category: "Web Development",
+        image: "https://picsum.photos/seed/api-authentication-guide/800/400",
+        content: (
+            <>
+                <p>Auth is confusing. Session cookies? JWTs? OAuth? Let's break down when to use each.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Session-Based Auth</h2>
+                <p>Server stores session data. Client gets a cookie with session ID. Simple and secure.</p>
+                <div className="bg-gray-100 p-4 rounded-md my-4 text-sm">
+                    <strong>Best For:</strong> Traditional server-rendered apps (Django, Rails)<br />
+                    <strong>Cons:</strong> Hard to scale horizontally, not mobile-friendly
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">JWT (JSON Web Tokens)</h2>
+                <p>Token contains user info. Server doesn't store anything. Client sends token with each request.</p>
+                <div className="bg-gray-100 p-4 rounded-md my-4 text-sm">
+                    <strong>Best For:</strong> SPAs, mobile apps, microservices<br />
+                    <strong>Cons:</strong> Can't revoke easily, token size
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">OAuth 2.0</h2>
+                <p>Delegation protocol. "Login with Google" uses this. User authorizes app without sharing password.</p>
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 my-6">
+                    <p className="font-medium text-blue-800">OAuth Flow:</p>
+                    <ol className="text-sm mt-2 list-decimal pl-4">
+                        <li>User clicks "Login with Google"</li>
+                        <li>Redirect to Google's auth page</li>
+                        <li>User approves, gets code</li>
+                        <li>Your server exchanges code for token</li>
+                    </ol>
+                </div>
+            </>
+        )
+    },
+    {
+        id: 29,
+        title: "Next.js vs Vite: Choosing the Right React Framework in 2026",
+        slug: "nextjs-vs-vite-2026",
+        date: "2026-01-24",
+        readTime: "8 min read",
+        description: "Compare SSR, SSG, and developer experience. Which React meta-framework should you choose?",
+        category: "Web Development",
+        image: "https://picsum.photos/seed/nextjs-vs-vite-2026/800/400",
+        content: (
+            <>
+                <p>Both are excellent choices, but they serve different purposes. Let's compare.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Vite: The Speed Demon</h2>
+                <p>Vite is a build tool, not a framework. Lightning-fast dev server using native ES modules.</p>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>Instant HMR:</strong> Changes appear in milliseconds</li>
+                    <li><strong>Minimal config:</strong> Just works out of box</li>
+                    <li><strong>Framework agnostic:</strong> Works with React, Vue, Svelte</li>
+                </ul>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Next.js: The Full Stack</h2>
+                <p>A complete React framework with routing, SSR, API routes, and more.</p>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>SSR/SSG:</strong> Server-side rendering built in</li>
+                    <li><strong>API Routes:</strong> Backend in the same project</li>
+                    <li><strong>Image Optimization:</strong> Automatic image handling</li>
+                </ul>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Quick Decision</h2>
+                <div className="bg-amber-50 p-6 rounded-lg border border-amber-100 my-6">
+                    <p className="text-sm"><strong>Use Vite if:</strong> Building a SPA, need speed, don't need SSR</p>
+                    <p className="text-sm mt-2"><strong>Use Next.js if:</strong> Need SEO, server rendering, full-stack app</p>
+                </div>
+            </>
+        )
+    },
+    {
+        id: 30,
+        title: "WebSockets vs REST APIs: Building Real-Time Applications",
+        slug: "websockets-vs-rest-realtime",
+        date: "2026-01-23",
+        readTime: "9 min read",
+        description: "Chat apps, live dashboards, gaming – when do you need WebSockets over traditional REST?",
+        category: "Web Development",
+        image: "https://picsum.photos/seed/websockets-vs-rest-realtime/800/400",
+        content: (
+            <>
+                <p>REST is request-response. WebSockets are always-on connections. The difference matters.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">How REST Works</h2>
+                <p>Client asks, server responds, connection closes. Every request = new connection.</p>
+                <div className="bg-gray-800 text-white p-4 rounded-md my-4 font-mono text-sm">
+                    Client: "Any new messages?"<br />
+                    Server: "Nope"<br />
+                    (repeat every 5 seconds = polling)
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">How WebSockets Work</h2>
+                <p>One persistent connection. Data flows both ways instantly, anytime.</p>
+                <div className="bg-gray-800 text-white p-4 rounded-md my-4 font-mono text-sm">
+                    Connection: *established*<br />
+                    Server: "New message from John!"<br />
+                    Server: "John is typing..."<br />
+                    (instant, no polling needed)
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Use Cases</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>Chat apps:</strong> WebSockets (Slack, Discord)</li>
+                    <li><strong>Live sports scores:</strong> WebSockets</li>
+                    <li><strong>E-commerce checkout:</strong> REST</li>
+                    <li><strong>Multiplayer games:</strong> WebSockets</li>
+                </ul>
+            </>
+        )
+    },
+    {
+        id: 31,
+        title: "AWS vs GCP vs Azure: A Student's Guide to Cloud Platforms",
+        slug: "aws-vs-gcp-vs-azure-guide",
+        date: "2026-01-22",
+        readTime: "10 min read",
+        description: "Which cloud platform should you learn first for job readiness? An honest comparison.",
+        category: "Cloud",
+        image: "https://picsum.photos/seed/aws-vs-gcp-vs-azure-guide/800/400",
+        content: (
+            <>
+                <p>Cloud skills are mandatory in 2026. But which platform should you invest your time in?</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Market Share (2026)</h2>
+                <div className="grid md:grid-cols-3 gap-4 my-6">
+                    <div className="bg-orange-50 p-4 rounded-lg text-center">
+                        <h3 className="font-bold text-2xl">AWS</h3>
+                        <p className="text-sm text-gray-600">~32% market share</p>
+                    </div>
+                    <div className="bg-blue-50 p-4 rounded-lg text-center">
+                        <h3 className="font-bold text-2xl">Azure</h3>
+                        <p className="text-sm text-gray-600">~23% market share</p>
+                    </div>
+                    <div className="bg-red-50 p-4 rounded-lg text-center">
+                        <h3 className="font-bold text-2xl">GCP</h3>
+                        <p className="text-sm text-gray-600">~10% market share</p>
+                    </div>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Strengths</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>AWS:</strong> Most services, biggest job market, enterprise standard</li>
+                    <li><strong>Azure:</strong> Best for Microsoft shops, hybrid cloud, enterprise</li>
+                    <li><strong>GCP:</strong> Best for AI/ML, BigQuery, Kubernetes (they invented it!)</li>
+                </ul>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Recommendation</h2>
+                <div className="bg-green-50 p-6 rounded-lg border border-green-100 my-6">
+                    <p className="text-sm">Start with <strong>AWS</strong> for maximum job opportunities. Learn GCP if you're focused on data/ML.</p>
+                </div>
+            </>
+        )
+    },
+    {
+        id: 32,
+        title: "Docker for Beginners: Why Containers Will Save Your Life",
+        slug: "docker-beginners-guide",
+        date: "2026-01-21",
+        readTime: "10 min read",
+        description: "Practical intro to Docker with hands-on examples. Never say 'works on my machine' again.",
+        category: "DevOps",
+        image: "https://picsum.photos/seed/docker-beginners-guide/800/400",
+        content: (
+            <>
+                <p>"But it works on my machine!" Docker eliminates this excuse forever. Here's how.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The Problem Docker Solves</h2>
+                <p>Your app needs Python 3.9, specific libraries, and a PostgreSQL database. Setting this up on every machine is painful. Docker packages everything together.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Key Concepts</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>Image:</strong> A blueprint (like a class)</li>
+                    <li><strong>Container:</strong> A running instance (like an object)</li>
+                    <li><strong>Dockerfile:</strong> Recipe to build an image</li>
+                    <li><strong>Volume:</strong> Persistent storage</li>
+                </ul>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Your First Dockerfile</h2>
+                <div className="bg-gray-800 text-white p-4 rounded-md my-4 font-mono text-sm">
+                    FROM python:3.9<br />
+                    WORKDIR /app<br />
+                    COPY requirements.txt .<br />
+                    RUN pip install -r requirements.txt<br />
+                    COPY . .<br />
+                    CMD ["python", "app.py"]
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Essential Commands</h2>
+                <div className="bg-gray-800 text-white p-4 rounded-md my-4 font-mono text-sm">
+                    docker build -t myapp .<br />
+                    docker run -p 8000:8000 myapp<br />
+                    docker ps<br />
+                    docker stop container_id
+                </div>
+            </>
+        )
+    },
+    {
+        id: 33,
+        title: "CI/CD Pipelines Explained: From Code to Production in Minutes",
+        slug: "cicd-pipelines-explained",
+        date: "2026-01-20",
+        readTime: "9 min read",
+        description: "Automate your deployments with GitHub Actions and Jenkins. Learn continuous integration and delivery.",
+        category: "DevOps",
+        image: "https://picsum.photos/seed/cicd-pipelines-explained/800/400",
+        content: (
+            <>
+                <p>Manually deploying code is slow and error-prone. CI/CD automates the entire process from commit to production.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">What is CI/CD?</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>CI (Continuous Integration):</strong> Automatically test every code change</li>
+                    <li><strong>CD (Continuous Delivery):</strong> Automatically prepare code for release</li>
+                    <li><strong>CD (Continuous Deployment):</strong> Automatically deploy to production</li>
+                </ul>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">A Simple GitHub Actions Workflow</h2>
+                <div className="bg-gray-800 text-white p-4 rounded-md my-4 font-mono text-sm overflow-x-auto">
+                    name: CI Pipeline<br />
+                    on: [push]<br />
+                    jobs:<br />
+                    {"  "}test:<br />
+                    {"    "}runs-on: ubuntu-latest<br />
+                    {"    "}steps:<br />
+                    {"      "}- uses: actions/checkout@v3<br />
+                    {"      "}- run: npm install<br />
+                    {"      "}- run: npm test
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Benefits</h2>
+                <div className="bg-green-50 p-6 rounded-lg border border-green-100 my-6">
+                    <ul className="text-sm space-y-2">
+                        <li>✅ Catch bugs early with automated tests</li>
+                        <li>✅ Deploy multiple times per day safely</li>
+                        <li>✅ Reduce "it works on my machine" issues</li>
+                    </ul>
+                </div>
+            </>
+        )
+    },
+    {
+        id: 34,
+        title: "Pandas Cheat Sheet: 20 Commands Every Data Scientist Uses Daily",
+        slug: "pandas-cheat-sheet-2026",
+        date: "2026-01-19",
+        readTime: "8 min read",
+        description: "Quick reference guide for Pandas operations. From data loading to groupby, all in one place.",
+        category: "Data Science",
+        image: "https://picsum.photos/seed/pandas-cheat-sheet-2026/800/400",
+        content: (
+            <>
+                <p>Pandas is the backbone of data analysis in Python. Here are the 20 commands you'll use every single day.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Loading Data</h2>
+                <div className="bg-gray-800 text-white p-4 rounded-md my-4 font-mono text-sm">
+                    df = pd.read_csv('data.csv')<br />
+                    df = pd.read_excel('data.xlsx')<br />
+                    df = pd.read_json('data.json')
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Exploring Data</h2>
+                <div className="bg-gray-800 text-white p-4 rounded-md my-4 font-mono text-sm">
+                    df.head()       # First 5 rows<br />
+                    df.info()       # Data types & nulls<br />
+                    df.describe()   # Statistics<br />
+                    df.shape        # (rows, cols)
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Filtering & Selection</h2>
+                <div className="bg-gray-800 text-white p-4 rounded-md my-4 font-mono text-sm">
+                    df['column']              # Single column<br />
+                    df[['col1', 'col2']]      # Multiple columns<br />
+                    df[df['age'] {">"} 25]       # Filter rows<br />
+                    df.loc[0:5, 'name']       # By label<br />
+                    df.iloc[0:5, 0:2]         # By position
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Aggregations</h2>
+                <div className="bg-gray-800 text-white p-4 rounded-md my-4 font-mono text-sm">
+                    df.groupby('category').mean()<br />
+                    df['column'].value_counts()<br />
+                    df.pivot_table(values='sales', index='region')
+                </div>
+            </>
+        )
+    },
+    {
+        id: 35,
+        title: "Feature Engineering: The Secret Sauce of Good ML Models",
+        slug: "feature-engineering-guide",
+        date: "2026-01-18",
+        readTime: "11 min read",
+        description: "Practical techniques that boost model accuracy. Learn how to create powerful features from raw data.",
+        category: "Machine Learning",
+        image: "https://picsum.photos/seed/feature-engineering-guide/800/400",
+        content: (
+            <>
+                <p>A simple model with great features beats a complex model with bad features. Here's how to craft winning features.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">What is Feature Engineering?</h2>
+                <p>Transforming raw data into features that better represent the underlying patterns you're trying to learn.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Key Techniques</h2>
+                <div className="grid md:grid-cols-2 gap-4 my-6">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Date Features</h3>
+                        <p className="text-sm text-gray-600">Extract day, month, weekday, is_weekend from timestamps</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Binning</h3>
+                        <p className="text-sm text-gray-600">Group ages into ranges: 0-18, 19-35, 36-50...</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Interactions</h3>
+                        <p className="text-sm text-gray-600">Create price_per_sqft = price / square_feet</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Aggregations</h3>
+                        <p className="text-sm text-gray-600">customer_avg_spend, user_total_orders</p>
+                    </div>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Domain Knowledge Matters</h2>
+                <div className="bg-amber-50 p-6 rounded-lg border border-amber-100 my-6">
+                    <p className="text-sm">The best features come from understanding the business problem. Talk to domain experts!</p>
+                </div>
+            </>
+        )
+    },
+    {
+        id: 36,
+        title: "Exploratory Data Analysis (EDA): A Step-by-Step Framework",
+        slug: "eda-framework-guide",
+        date: "2026-01-17",
+        readTime: "10 min read",
+        description: "How to understand your data before modeling. A systematic approach to EDA with visualizations.",
+        category: "Data Science",
+        image: "https://picsum.photos/seed/eda-framework-guide/800/400",
+        content: (
+            <>
+                <p>Jumping straight to modeling is a mistake. EDA helps you understand your data and avoid costly errors.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The EDA Framework</h2>
+                <ol className="list-decimal pl-6 space-y-4 mt-4">
+                    <li><strong>Shape & Size:</strong> How many rows? Columns? Memory usage?</li>
+                    <li><strong>Data Types:</strong> Numeric, categorical, datetime? Any mismatches?</li>
+                    <li><strong>Missing Values:</strong> How many? Random or systematic?</li>
+                    <li><strong>Distributions:</strong> Normal? Skewed? Outliers?</li>
+                    <li><strong>Relationships:</strong> Correlations between features and target</li>
+                </ol>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Essential Visualizations</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>Histograms:</strong> Distribution of numeric features</li>
+                    <li><strong>Box plots:</strong> Outliers and quartiles</li>
+                    <li><strong>Scatter plots:</strong> Relationship between two variables</li>
+                    <li><strong>Heatmaps:</strong> Correlation matrix</li>
+                    <li><strong>Bar charts:</strong> Categorical value counts</li>
+                </ul>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Questions to Ask</h2>
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 my-6">
+                    <ul className="text-sm space-y-2">
+                        <li>🔍 Are there any data quality issues?</li>
+                        <li>🔍 Which features seem predictive?</li>
+                        <li>🔍 Is the target variable balanced?</li>
+                    </ul>
+                </div>
+            </>
+        )
+    },
+    {
+        id: 37,
+        title: "How to Use AI to 10x Your Content Marketing in 2026",
+        slug: "ai-content-marketing-2026",
+        date: "2026-01-16",
+        readTime: "9 min read",
+        description: "Tools and workflows for creators. Supercharge your content production with AI assistance.",
+        category: "Digital Marketing",
+        image: "https://picsum.photos/seed/ai-content-marketing-2026/800/400",
+        content: (
+            <>
+                <p>AI won't replace marketers, but marketers using AI will replace those who don't. Here's how to leverage it.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Content Ideation</h2>
+                <p>Use ChatGPT/Claude to brainstorm topics, angles, and headlines. Ask for 20 ideas, pick the best 3.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The AI Content Workflow</h2>
+                <ol className="list-decimal pl-6 space-y-2 mt-4">
+                    <li><strong>Research:</strong> AI summarizes competitor content</li>
+                    <li><strong>Outline:</strong> AI creates structure, you refine</li>
+                    <li><strong>Draft:</strong> AI writes first draft</li>
+                    <li><strong>Edit:</strong> YOU add personality and facts</li>
+                    <li><strong>Optimize:</strong> AI suggests SEO improvements</li>
+                </ol>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Best AI Tools for Marketers</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>Copy:</strong> ChatGPT, Claude, Jasper</li>
+                    <li><strong>Images:</strong> Midjourney, DALL-E 3</li>
+                    <li><strong>Video:</strong> Runway, Synthesia</li>
+                    <li><strong>Audio:</strong> ElevenLabs, Descript</li>
+                </ul>
+                <div className="bg-red-50 p-6 rounded-lg border border-red-100 my-6">
+                    <p className="font-medium text-red-800">⚠️ Warning</p>
+                    <p className="text-sm mt-2">Never publish AI content without human review. Always fact-check and add your unique perspective.</p>
+                </div>
+            </>
+        )
+    },
+    {
+        id: 38,
+        title: "Technical SEO Checklist: What Developers Need to Know",
+        slug: "technical-seo-developers-checklist",
+        date: "2026-01-15",
+        readTime: "10 min read",
+        description: "Core Web Vitals, structured data, crawlability. The technical SEO essentials every developer should master.",
+        category: "SEO",
+        image: "https://picsum.photos/seed/technical-seo-developers-checklist/800/400",
+        content: (
+            <>
+                <p>SEO isn't just keywords. The technical foundation matters as much as content. Here's what developers need to know.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Core Web Vitals</h2>
+                <div className="grid md:grid-cols-3 gap-4 my-6">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">LCP</h3>
+                        <p className="text-sm text-gray-600">Largest Contentful Paint {"<"} 2.5s</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">FID</h3>
+                        <p className="text-sm text-gray-600">First Input Delay {"<"} 100ms</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">CLS</h3>
+                        <p className="text-sm text-gray-600">Cumulative Layout Shift {"<"} 0.1</p>
+                    </div>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The Checklist</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li>✅ Mobile-first responsive design</li>
+                    <li>✅ HTTPS everywhere</li>
+                    <li>✅ Clean URL structure (/blog/my-post not /p?id=123)</li>
+                    <li>✅ XML sitemap submitted to Google</li>
+                    <li>✅ robots.txt properly configured</li>
+                    <li>✅ Proper heading hierarchy (H1 → H2 → H3)</li>
+                    <li>✅ Image alt tags and lazy loading</li>
+                    <li>✅ Structured data (JSON-LD)</li>
+                </ul>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Testing Tools</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>PageSpeed Insights:</strong> Performance metrics</li>
+                    <li><strong>Search Console:</strong> Indexing issues</li>
+                    <li><strong>Schema Validator:</strong> Structured data testing</li>
+                </ul>
+            </>
+        )
+    },
+    {
+        id: 39,
+        title: "Email Marketing Automation: From Zero to First Campaign",
+        slug: "email-marketing-automation-guide",
+        date: "2026-01-14",
+        readTime: "9 min read",
+        description: "Mailchimp, ConvertKit, and best practices. Launch your first automated email sequence today.",
+        category: "Digital Marketing",
+        image: "https://picsum.photos/seed/email-marketing-automation-guide/800/400",
+        content: (
+            <>
+                <p>Email marketing has the highest ROI of any channel. $36 for every $1 spent. Here's how to automate it.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Why Automation?</h2>
+                <p>Set up once, run forever. While you sleep, your emails nurture leads, onboard users, and recover abandoned carts.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Essential Automated Sequences</h2>
+                <ol className="list-decimal pl-6 space-y-4 mt-4">
+                    <li><strong>Welcome Series:</strong> 3-5 emails introducing your brand</li>
+                    <li><strong>Onboarding:</strong> Help new users get value fast</li>
+                    <li><strong>Abandoned Cart:</strong> Remind users to complete purchase</li>
+                    <li><strong>Re-engagement:</strong> Win back inactive subscribers</li>
+                </ol>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Best Practices</h2>
+                <div className="bg-green-50 p-6 rounded-lg border border-green-100 my-6">
+                    <ul className="text-sm space-y-2">
+                        <li>✅ Personalize with first names</li>
+                        <li>✅ Segment your list by behavior</li>
+                        <li>✅ A/B test subject lines</li>
+                        <li>✅ Send at optimal times (test!)</li>
+                        <li>✅ Always include unsubscribe link</li>
+                    </ul>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Tool Comparison</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>Mailchimp:</strong> Best for beginners, generous free tier</li>
+                    <li><strong>ConvertKit:</strong> Best for creators and bloggers</li>
+                    <li><strong>ActiveCampaign:</strong> Best for advanced automation</li>
+                </ul>
+            </>
+        )
+    },
+    {
+        id: 40,
+        title: "How to Build a Portfolio That Actually Gets You Hired",
+        slug: "portfolio-building-guide",
+        date: "2026-01-13",
+        readTime: "11 min read",
+        description: "What recruiters look for in developer portfolios. Real examples and actionable tips.",
+        category: "Career Advice",
+        image: "https://picsum.photos/seed/portfolio-building-guide/800/400",
+        content: (
+            <>
+                <p>Your portfolio is your proof. Not what you say you can do—what you've actually done. Here's how to make it stand out.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Quality Over Quantity</h2>
+                <p>3 excellent projects {">"} 10 todo apps. Each project should demonstrate real problem-solving.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">What Makes a Great Project</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>Real Problem:</strong> "I built X because Y was frustrating"</li>
+                    <li><strong>Live Demo:</strong> Deployed and working</li>
+                    <li><strong>Clean Code:</strong> README, comments, structure</li>
+                    <li><strong>Tech Stack:</strong> Relevant to jobs you want</li>
+                </ul>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Project Ideas by Role</h2>
+                <div className="grid md:grid-cols-2 gap-4 my-6">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Frontend</h3>
+                        <p className="text-sm text-gray-600">E-commerce UI, Dashboard clone, Interactive data viz</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Backend</h3>
+                        <p className="text-sm text-gray-600">REST API, Auth system, Real-time chat</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Data Science</h3>
+                        <p className="text-sm text-gray-600">EDA notebook, ML model deployment, Data pipeline</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Full Stack</h3>
+                        <p className="text-sm text-gray-600">SaaS clone, Social platform, Content management system</p>
+                    </div>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Don't Forget</h2>
+                <div className="bg-amber-50 p-6 rounded-lg border border-amber-100 my-6">
+                    <p className="text-sm">Add case studies! Explain WHY you made decisions, not just WHAT you built.</p>
+                </div>
+            </>
+        )
+    },
+    {
+        id: 41,
+        title: "The Ultimate Guide to Technical Interview Preparation",
+        slug: "technical-interview-preparation-guide",
+        date: "2026-01-12",
+        readTime: "14 min read",
+        description: "DSA, system design, and behavioral rounds. A complete roadmap to crack technical interviews.",
+        category: "Career Advice",
+        image: "https://picsum.photos/seed/technical-interview-preparation-guide/800/400",
+        content: (
+            <>
+                <p>Technical interviews are a skill you can learn. With the right preparation, you can crack even FAANG-level interviews.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The Three Pillars</h2>
+                <div className="grid md:grid-cols-3 gap-4 my-6">
+                    <div className="bg-blue-50 p-4 rounded-lg">
+                        <h3 className="font-bold">DSA</h3>
+                        <p className="text-sm text-gray-600">Data Structures & Algorithms</p>
+                    </div>
+                    <div className="bg-green-50 p-4 rounded-lg">
+                        <h3 className="font-bold">System Design</h3>
+                        <p className="text-sm text-gray-600">For mid/senior roles</p>
+                    </div>
+                    <div className="bg-purple-50 p-4 rounded-lg">
+                        <h3 className="font-bold">Behavioral</h3>
+                        <p className="text-sm text-gray-600">STAR method stories</p>
+                    </div>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">8-Week DSA Plan</h2>
+                <ol className="list-decimal pl-6 space-y-2 mt-4">
+                    <li><strong>Week 1-2:</strong> Arrays, Strings, Hash Maps</li>
+                    <li><strong>Week 3-4:</strong> Linked Lists, Stacks, Queues</li>
+                    <li><strong>Week 5-6:</strong> Trees, Graphs, BFS/DFS</li>
+                    <li><strong>Week 7-8:</strong> Dynamic Programming</li>
+                </ol>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Interview Day Tips</h2>
+                <div className="bg-green-50 p-6 rounded-lg border border-green-100 my-6">
+                    <ul className="text-sm space-y-2">
+                        <li>💡 Think out loud—interviewers want to see your process</li>
+                        <li>💡 Clarify constraints before coding</li>
+                        <li>💡 Start with brute force, then optimize</li>
+                        <li>💡 Test with edge cases</li>
+                    </ul>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Top Resources</h2>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                    <li><strong>LeetCode:</strong> 150+ most-asked problems</li>
+                    <li><strong>NeetCode:</strong> Curated roadmap</li>
+                    <li><strong>System Design Primer:</strong> Free GitHub guide</li>
+                </ul>
+            </>
+        )
+    },
+    {
+        id: 42,
+        title: "Freelancing vs Full-Time Job: Which Path is Right for You in 2026?",
+        slug: "freelancing-vs-fulltime-2026",
+        date: "2026-01-11",
+        readTime: "10 min read",
+        description: "Honest comparison for fresh graduates. Income, stability, growth – we analyze both paths.",
+        category: "Career Advice",
+        image: "https://picsum.photos/seed/freelancing-vs-fulltime-2026/800/400",
+        content: (
+            <>
+                <p>The "9-5 is dead" crowd vs "job security" believers. The truth is somewhere in between. Let's analyze.</p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Full-Time Employment</h2>
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 my-6">
+                    <p className="font-medium text-blue-800">Pros:</p>
+                    <ul className="text-sm mt-2 list-disc pl-4">
+                        <li>Stable income, benefits, PTO</li>
+                        <li>Structured learning & mentorship</li>
+                        <li>Clear career progression</li>
+                        <li>Team collaboration</li>
+                    </ul>
+                    <p className="font-medium text-blue-800 mt-4">Cons:</p>
+                    <ul className="text-sm mt-2 list-disc pl-4">
+                        <li>Income ceiling</li>
+                        <li>Less flexibility</li>
+                        <li>Office politics</li>
+                    </ul>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Freelancing</h2>
+                <div className="bg-green-50 p-6 rounded-lg border border-green-100 my-6">
+                    <p className="font-medium text-green-800">Pros:</p>
+                    <ul className="text-sm mt-2 list-disc pl-4">
+                        <li>Unlimited income potential</li>
+                        <li>Complete flexibility</li>
+                        <li>Choose your projects</li>
+                        <li>Location independence</li>
+                    </ul>
+                    <p className="font-medium text-green-800 mt-4">Cons:</p>
+                    <ul className="text-sm mt-2 list-disc pl-4">
+                        <li>Inconsistent income</li>
+                        <li>No benefits, you handle taxes</li>
+                        <li>Must find own clients</li>
+                        <li>Loneliness</li>
+                    </ul>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">My Recommendation</h2>
+                <div className="bg-amber-50 p-6 rounded-lg border border-amber-100 my-6">
+                    <p className="text-sm"><strong>For beginners:</strong> Start full-time. Learn from seniors, build skills, save money.</p>
+                    <p className="text-sm mt-2"><strong>After 2-3 years:</strong> Try freelancing on the side. Build clients before leaving.</p>
+                    <p className="text-sm mt-2"><strong>Best of both:</strong> Remote full-time job gives stability + flexibility.</p>
+                </div>
+            </>
+        )
+    },
 ];
