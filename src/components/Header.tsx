@@ -16,7 +16,7 @@ export const Header = () => {
     { name: "Psychometric Test", path: "https://pt.techmiyaedtech.com/" },
     { name: "Contact", path: "https://www.techmiyaedtech.com/" },
     { name: "Blog", path: "/" },
-    { name: "Jobs", path: "https://jobs.techmiyaedtech.com/" }
+    { name: "Jobs", path: "https://oncampusjobs.techmiyaedtech.com/" }
   ];
 
   const isActive = (path: string) => location.pathname === path;
